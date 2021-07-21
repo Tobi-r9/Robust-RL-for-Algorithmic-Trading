@@ -1,18 +1,34 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>50</x><y>40</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Environment
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>class: Agent
+--
+</help_text><element><id>UMLClass</id><coordinates><x>109</x><y>19</y><w>210</w><h>130</h></coordinates><panel_attributes>class: Environment
 --
 _attributes_:
 * old_state
 * new_state
 * possible actions
-* reward 
-* </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>40</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Agent
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>140</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Layer
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>140</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Data
+* reward
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>240</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Backtesting
+_functions_:
+* update_states
+* get_actions
+* get_new_state
+* get_old_state
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>19</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Agent
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>240</y><w>210</w><h>70</h></coordinates><panel_attributes>main.py
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>119</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Layer
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>109</x><y>219</y><w>210</w><h>90</h></coordinates><panel_attributes>class: Data
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>340</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Model
+_attributes_:
+* stock name
+* data
+--
+_functions_:
+* get_data
+* preprocess
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>109</x><y>379</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Backtesting
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>219</y><w>210</w><h>70</h></coordinates><panel_attributes>main.py
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>379</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Model
 --
 </panel_attributes><additional_attributes></additional_attributes></element></diagram>
