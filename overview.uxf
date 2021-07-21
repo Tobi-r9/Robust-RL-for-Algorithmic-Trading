@@ -1,0 +1,18 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>50</x><y>40</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Environment
+--
+_attributes_:
+* old_state
+* new_state
+* possible actions
+* reward 
+* </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>40</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Agent
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>140</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Layer
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>140</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Data
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>240</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Backtesting
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>240</y><w>210</w><h>70</h></coordinates><panel_attributes>main.py
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>340</y><w>210</w><h>70</h></coordinates><panel_attributes>class: Model
+--
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
