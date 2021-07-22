@@ -101,3 +101,6 @@ class SDAE(tfk.Model):
         h = self.encoder(input)
         x = self.decoder(h)
         return x 
+
+    def get_hidden_state(self, input):
+        return self.encoder(input)
