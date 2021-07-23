@@ -5,17 +5,16 @@ tfkl = tf.keras.layers
 
 
 class Encoder(tfkl.Layer):
-    """[summary]
-
-    Args:
-        tfkl ([type]): [description]
+    """ The Encoder encodes the input to a hidden state. 
+    To make sure that not only the identity mapping is learned, 
+    gaussian noise is added to the input before fed to the Network
     """
     def __init__(
         self,
-        input_dim=12,
-        intermediate_dim=10,
-        latent_dim=16,
-        stddev=0.01,
+        input_dim,
+        intermediate_dim,
+        latent_dim,
+        stddev,
         name="encoder",
         **kwargs
     ):
@@ -40,16 +39,14 @@ class Encoder(tfkl.Layer):
 
 
 class Decoder(tfkl.Layer):
-    """[summary]
-
-    Args:
-        tfkl ([type]): [description]
+    """ The Decoder decodes the hidden state back to the 
+        original dimension (output_dim). 
     """
     def __init__(
         self,
-        input_dim=16,
-        intermediate_dim=10,
-        output_dim=12,
+        input_dim,
+        intermediate_dim,
+        output_dim,
         name="decoder",
         **kwargs
     ):
@@ -71,10 +68,9 @@ class Decoder(tfkl.Layer):
 
 
 class SDAE(tfk.Model):
-    """[summary]
-
-    Args:
-        tfk ([type]): [description]
+    """ The Stochastic Denoising Autoencoder, finds a sparse hidden representation of the data,
+    by adding gaussian noise to the input and reconstruct the original input with a standard Autoencoder.
+    The hidden representation from the encoder should be a sparse denoised version of the input. 
     """
 
     def __init__(
@@ -83,7 +79,7 @@ class SDAE(tfk.Model):
         intermediate_dim=10,
         latent_dim=16,
         output_dim=12,
-        stddev=0.01,
+        stddev=1e-4,
         name="sdae",
         **kwargs
     ):
@@ -103,4 +99,12 @@ class SDAE(tfk.Model):
         return x 
 
     def get_hidden_state(self, input):
+        """returns the input encoded by the trained Encoder
+
+        Args:
+            input (np.array or tf.tensor): shape = (n, input_dim)
+
+        Returns:
+            tf.tensor: shape = (n, hidden_dim)
+        """
         return self.encoder(input)
