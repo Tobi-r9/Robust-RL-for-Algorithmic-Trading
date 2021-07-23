@@ -23,14 +23,24 @@ class Encoder(tfkl.Layer):
         self.intermediate_dim = intermediate_dim
         self.latent_dim = latent_dim
         self.stddev = stddev
-        # self.input_layer = tfkl.InputLayer(input_dim=[(self.input_dim, )])
         self.noise_layer = tf.keras.layers.GaussianNoise(self.stddev)
-        self.linear_1 = tfkl.Dense(self.input_dim, activation='relu', kernel_initializer="he_normal")
-        self.linear_2 = tfkl.Dense(self.intermediate_dim, activation='relu', kernel_initializer="he_normal")
-        self.linear_3 = tfkl.Dense(self.latent_dim, activation='relu', kernel_initializer="he_normal")
+        self.linear_1 = tfkl.Dense(
+            self.input_dim,
+            activation='relu',
+            kernel_initializer="he_normal"
+            )
+        self.linear_2 = tfkl.Dense(
+            self.intermediate_dim,
+            activation='relu',
+            kernel_initializer="he_normal"
+            )
+        self.linear_3 = tfkl.Dense(
+            self.latent_dim,
+            activation='relu',
+            kernel_initializer="he_normal"
+            )
     
     def call(self, input):
-        # input = self.input_layer(input)
         x = self.noise_layer(input)
         x = self.linear_1(x)
         x = self.linear_2(x)
@@ -54,13 +64,21 @@ class Decoder(tfkl.Layer):
         self.input_dim = input_dim
         self.intermediate_dim = intermediate_dim
         self.output_dim = output_dim
-        # self.input_layer = tfkl.InputLayer(input_dim=[(self.input_dim, )])
-        self.linear_1 = tfkl.Dense(self.input_dim,activation='relu' ,kernel_initializer="he_normal")
-        self.linear_2 = tfkl.Dense(self.intermediate_dim,activation='relu', kernel_initializer="he_normal")
-        self.linear_3 = tfkl.Dense(self.output_dim, activation='linear', kernel_initializer="he_normal")
+        self.linear_1 = tfkl.Dense(
+            self.input_dim,activation='relu',
+            kernel_initializer="he_normal"
+            )
+        self.linear_2 = tfkl.Dense(
+            self.intermediate_dim,activation='relu',
+            kernel_initializer="he_normal"
+            )
+        self.linear_3 = tfkl.Dense(
+            self.output_dim,
+            activation='linear',
+            kernel_initializer="he_normal"
+            )
     
     def call(self, input):
-        # input = self.input_layer(input)
         x = self.linear_1(input)
         x = self.linear_2(x)
         x = self.linear_3(x)
@@ -90,8 +108,17 @@ class SDAE(tfk.Model):
         self.latent_dim = latent_dim
         self.output_dim = output_dim
         self.stddev = stddev
-        self.encoder = Encoder(input_dim=self.input_dim, intermediate_dim=self.intermediate_dim, latent_dim=self.latent_dim, stddev=self.stddev)
-        self.decoder = Decoder(input_dim=self.latent_dim, intermediate_dim=self.intermediate_dim, output_dim=self.output_dim)
+        self.encoder = Encoder(
+            input_dim=self.input_dim, 
+            intermediate_dim=self.intermediate_dim, 
+            latent_dim=self.latent_dim, 
+            stddev=self.stddev
+            )
+        self.decoder = Decoder(
+            input_dim=self.latent_dim, 
+            intermediate_dim=self.intermediate_dim, 
+            output_dim=self.output_dim
+            )
 
     def call(self, input):
         h = self.encoder(input)
